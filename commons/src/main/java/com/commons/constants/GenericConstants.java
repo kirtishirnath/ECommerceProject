@@ -1,4 +1,4 @@
-package com.commons.Constants;
+package com.commons.constants;
 
 public class GenericConstants {
 

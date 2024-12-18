@@ -1,4 +1,4 @@
-package com.commons.Payment;
+package com.commons.payment;
 
 import lombok.Data;
 
