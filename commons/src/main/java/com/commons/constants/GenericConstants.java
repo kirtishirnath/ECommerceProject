@@ -2,7 +2,7 @@ package com.commons.constants;
 
 public class GenericConstants {
 
-    public static final String RECORD_ADDED_SUCCESSFULLY = "Record added successfully";
+    public static final String OPERATION_PERFORMED_SUCCESSFULLY = "Record %s successfully";
 
-    public static final String ERROR_WHILE_ADDING_RECORD ="Error while adding record";
+    public static final String ERROR_WHILE_PERFORMING_OPERATION = "Error while performing operation: %s.";
 }
