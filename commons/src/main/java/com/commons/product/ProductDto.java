@@ -1,9 +1,6 @@
 package com.commons.product;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
@@ -12,7 +9,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class ProductDto {
+@EqualsAndHashCode(callSuper = false)
+public class ProductDto extends AuditableDto {
 
     private String productId;
     private String productName;

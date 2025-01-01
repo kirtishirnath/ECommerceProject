@@ -3,13 +3,15 @@ package com.commons.product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductCategoryDto {
+@SuperBuilder
+public class ProductCategoryDto extends AuditableDto {
 
-    private String productCategoryCode;
+    private String productCategory;
 
     private String name;
 

@@ -3,12 +3,15 @@ package com.product.controller;
 import com.commons.constants.GenericApiConstants;
 import com.commons.constants.GenericConstants;
 import com.commons.product.ProductDto;
+import com.commons.utility.PageableResponse;
 import com.commons.utility.ResponseDto;
+import com.commons.utility.SearchRequest;
 import com.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -63,14 +66,14 @@ public class ProductController {
         }
         return new ResponseDto(false,null,String.format(GenericConstants.ERROR_WHILE_PERFORMING_OPERATION, "fetchAll"));
     }
-//
-//    @PostMapping
-//    ResponseDto save(@RequestBody ProductDto productDto){
-//        ProductDto save = productService.save(productDto);
-//        if(null != save){
-//            return new ResponseDto(true,save, GenericConstants.RECORD_ADDED_SUCCESSFULLY);
-//        }
-//        return new ResponseDto(false,null,String.format(GenericConstants.ERROR_WHILE_PERFORMING_OPERATION, "add"));
-//    }
+
+    @GetMapping(GenericApiConstants.ENDPOINT_GET_ALL_BY_FILTER)
+    ResponseDto search(SearchRequest searchRequest){
+        PageableResponse<ProductDto> productDtos = productService.search(searchRequest);
+        if(null != productDtos){
+            return new ResponseDto(true,productDtos,String.format(GenericConstants.OPERATION_PERFORMED_SUCCESSFULLY, "retrived") );
+        }
+        return new ResponseDto(false,null,String.format(GenericConstants.ERROR_WHILE_PERFORMING_OPERATION, "fetchAllPageable"));
+    }
 
 }
