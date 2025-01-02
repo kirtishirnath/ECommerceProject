@@ -16,5 +16,5 @@ public interface GenericService<T> {
 
     boolean deleteById(String object);
 
-    List<ProductDto> getAll();
+    List<T> getAll();
 }

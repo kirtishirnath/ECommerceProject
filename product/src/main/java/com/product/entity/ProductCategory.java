@@ -15,6 +15,9 @@ public class ProductCategory extends Auditable{
     @Column(name = "product_category")
     private String productCategory;
 
+    @Column(name="sub_category")
+    private String subCategory;
+
     @Column(name = "name")
     private String name;
 

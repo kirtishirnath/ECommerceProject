@@ -14,9 +14,11 @@ public class ProductDto extends AuditableDto {
 
     private String productId;
     private String productName;
-    private String ownerId;
+    private String productDescription;
+    private String brand;
+    private String sellerId;
     private String productCategory;
     private BigDecimal price;
     private BigDecimal discount;
-    private BigDecimal finalPrice;
+    private String taxCode;
 }

@@ -5,11 +5,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ProductValidator {
+
     public void validateProduct(ProductDto productDto){
-        validateOwner(productDto.getOwnerId());
+        validateOwner(productDto.getSellerId());
     }
 
-    private void validateOwner(String ownerId) {
+    private void validateOwner(String sellerId) {
 
     }
 }

@@ -13,6 +13,8 @@ public class ProductCategoryDto extends AuditableDto {
 
     private String productCategory;
 
+    private String subCategory;
+
     private String name;
 
     private String discountCode;

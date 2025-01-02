@@ -26,8 +26,14 @@ public class Product extends Auditable{
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "owner_id")
-    private String ownerId;
+    @Column(name="product_description")
+    private String productDescription;
+
+    @Column(name="brand")
+    private String brand;
+
+    @Column(name = "seller_id")
+    private String sellerId;
 
     @Column(name = "product_category")
     private String productCategory;
@@ -38,7 +44,7 @@ public class Product extends Auditable{
     @Column(name = "discount")
     private BigDecimal discount;
 
-    @Column(name = "final_price")
-    private BigDecimal finalPrice;
+    @Column(name = "tax_code")
+    private String taxCode;
 
 }
