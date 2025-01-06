@@ -1,6 +1,7 @@
 package com.user.service;
 
-import com.commons.product.ProductDto;
+import com.commons.utility.PageableResponse;
+import com.commons.utility.SearchRequest;
 
 import java.util.List;
 
@@ -13,5 +14,7 @@ public interface GenericService<T> {
 
     boolean deleteById(String object);
 
-    List<ProductDto> getAll();
+    List<T> getAll();
+
+    PageableResponse<T> search(SearchRequest searchRequest);
 }
