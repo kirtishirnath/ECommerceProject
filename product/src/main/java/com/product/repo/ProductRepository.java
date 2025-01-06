@@ -14,7 +14,7 @@ public interface ProductRepository extends JpaRepository<Product,String> {
             select
             	*
             from
-            	product.product p
+            	"product"."product" p
             where
             	:filter is null
             	or :filter = ''

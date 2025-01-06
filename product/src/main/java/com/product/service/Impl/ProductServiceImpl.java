@@ -80,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
         PageableResponse pageableResponse = new PageableResponse();
         pageableResponse.setCurrentPage(allProducts.getNumber());
         pageableResponse.setTotalPages(allProducts.getTotalPages());
-        pageableResponse.setTotalRecord(allProducts.getSize());
+        pageableResponse.setTotalRecord(allProducts.getTotalElements());
         pageableResponse.setData(productMapper.productListToProductDtoList(allProducts.getContent()));
         return pageableResponse;
     }

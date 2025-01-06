@@ -17,4 +17,6 @@ public interface GenericService<T> {
     boolean deleteById(String object);
 
     List<T> getAll();
+
+    PageableResponse<T> search(SearchRequest searchRequest);
 }
