@@ -15,7 +15,7 @@ public class PageableResponse <T>{
 
     private int currentPage;
 
-    private int totalRecord;
+    private long totalRecord;
 
     List<T> data;
 }

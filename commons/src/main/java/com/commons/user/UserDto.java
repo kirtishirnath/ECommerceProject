@@ -1,23 +1,31 @@
 package com.commons.user;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+@SuperBuilder
+public class UserDto extends AuditableDto{
 
     private String userId;
 
-    @Builder.Default
-    private String role="BUYER";
+    private String userName;
 
-    private String name;
+    private String password;
 
-    @Builder.Default
-    private String isAdmin="N";
+    private String role = "BUYER";
+
+    private String firstName;
+
+    private String lastName;
+
+    private String email;
+
+    private String phoneNumber;
 }
