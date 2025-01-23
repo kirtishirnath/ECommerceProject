@@ -25,4 +25,6 @@ public interface UserRepository extends JpaRepository<User,String> {
     Page<User> findAllUsers(String filter, PageRequest pageRequest);
 
     boolean existsByPhoneNumber(String phoneNumber);
+
+    User findByUsernameAndPassword(String userName, String password);
 }
