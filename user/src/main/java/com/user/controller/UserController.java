@@ -2,6 +2,8 @@ package com.user.controller;
 
 import com.commons.constants.GenericApiConstants;
 import com.commons.constants.GenericConstants;
+import com.commons.user.LoginDto;
+import com.commons.user.LoginResponseDto;
 import com.commons.user.UserDto;
 import com.commons.utility.PageableResponse;
 import com.commons.utility.ResponseDto;
@@ -20,13 +22,22 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping
-    ResponseDto saveUser(@RequestBody UserDto userDto){
+    @PostMapping("/sign-up")
+    ResponseDto signUpUser(@RequestBody UserDto userDto){
         UserDto save = userService.save(userDto);
         if(null != save){
             return new ResponseDto(true,save,String.format(GenericConstants.OPERATION_PERFORMED_SUCCESSFULLY,"added"));
         }
-        return new ResponseDto(true,null,String.format(GenericConstants.ERROR_WHILE_PERFORMING_OPERATION,"added"));
+        return new ResponseDto(true,null,String.format(GenericConstants.ERROR_WHILE_PERFORMING_OPERATION,"add"));
+    }
+
+    @PostMapping("/login")
+    ResponseDto loginUser(@RequestBody LoginDto loginDto){
+        LoginResponseDto save = userService.login(loginDto);
+        if(null != save){
+            return new ResponseDto(true,save,String.format(GenericConstants.OPERATION_PERFORMED_SUCCESSFULLY,"fetched"));
+        }
+        return new ResponseDto(true,null,String.format(GenericConstants.ERROR_WHILE_PERFORMING_OPERATION,"fetch"));
     }
 
     @PutMapping
