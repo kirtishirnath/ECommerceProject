@@ -1,6 +1,9 @@
 package com.product.service.Impl;
 
+import com.commons.exception.BaseException;
 import com.commons.product.ProductCategoryDto;
+import com.commons.utility.PageableResponse;
+import com.commons.utility.SearchRequest;
 import com.product.mapper.ProductCategoryMapper;
 import com.product.repo.ProductCategoryRepository;
 import com.product.service.ProductCategoryService;
@@ -21,15 +24,24 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public ProductCategoryDto save(ProductCategoryDto productCategoryDto) {
-        return productCategoryMapper.productCategoryToProductCategoryDto(productCategoryRepository
-                .save(productCategoryMapper.productCategoryDtoToProductCategory(productCategoryDto)));
+        if(StringUtils.isNotBlank(productCategoryDto.getProductCategory())){
+            if( !productCategoryRepository.existsById(productCategoryDto.getProductCategory())){
+                return productCategoryMapper.productCategoryToProductCategoryDto(productCategoryRepository
+                        .save(productCategoryMapper.productCategoryDtoToProductCategory(productCategoryDto)));
+            }
+            throw new BaseException("Product category already exists.");
+        }
+        return null;
     }
 
     @Override
     public ProductCategoryDto update(ProductCategoryDto productCategoryDto) {
-        if (StringUtils.isNotBlank(productCategoryDto.getProductCategory()) && productCategoryRepository.existsById(productCategoryDto.getProductCategory())) {
-            return productCategoryMapper.productCategoryToProductCategoryDto(productCategoryRepository
-                    .save(productCategoryMapper.productCategoryDtoToProductCategory(productCategoryDto)));
+        if (StringUtils.isNotBlank(productCategoryDto.getProductCategory())) {
+            if(productCategoryRepository.existsById(productCategoryDto.getProductCategory())){
+                return productCategoryMapper.productCategoryToProductCategoryDto(productCategoryRepository
+                        .save(productCategoryMapper.productCategoryDtoToProductCategory(productCategoryDto)));
+            }
+            throw new BaseException("Product category does not exists.");
         }
         return null;
     }
@@ -54,5 +66,10 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Override
     public List<ProductCategoryDto> getAll() {
         return productCategoryMapper.productCategoryListToProductCategoryDtoList(productCategoryRepository.findAll());
+    }
+
+    @Override
+    public PageableResponse<ProductCategoryDto> search(SearchRequest searchRequest) {
+        return null;
     }
 }
