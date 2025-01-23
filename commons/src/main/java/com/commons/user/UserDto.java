@@ -1,9 +1,7 @@
 package com.commons.user;
 
 import lombok.AllArgsConstructor;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
